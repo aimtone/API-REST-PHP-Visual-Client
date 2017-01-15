@@ -38,7 +38,7 @@
 		    $scope.get = function(id){
 		    	// Si la Id esta en blanco, entonces la solicitud es general
 		    	if(id=="") {
-		    		$http.get("http://localhost/api/api/usuario").then(function (response) {
+		    		$http.get("api/usuario").then(function (response) {
 				        $scope.lista = response.data.data;
 				        Materialize.toast(response.data.statusMessage, 4000);
 				        
@@ -47,7 +47,7 @@
 				    });
 				// Si la Id no esta en blanco, la solicitud se hace a un elemento especifico
 		    	} else {
-		    		$http.get("http://localhost/api/api/usuario/" + id).then(function (response) {
+		    		$http.get("api/usuario/" + id).then(function (response) {
 				        $scope.nuevo = response.data.data[0];
 				        Materialize.toast(response.data.statusMessage, 4000);
 				    }, function(response) {
@@ -58,7 +58,7 @@
 
 		    // La funcion post() que hace la solicitud para publicar un nuevo elemento
 		    $scope.post = function() {
-		    	$http.post("http://localhost/api/api/usuario", $scope.nuevo)
+		    	$http.post("api/usuario", $scope.nuevo)
 			    	.then(function (response){
 			            Materialize.toast(response.data.statusMessage, 4000);
 			            $scope.nuevo = null;
@@ -72,7 +72,7 @@
 		    // La funcion put() que hace la solicitud para modificar un elemento especifico
 		    $scope.put = function(id) {
 		 
-		    	$http.put("http://localhost/api/api/usuario/" + id, $scope.nuevo)
+		    	$http.put("api/usuario/" + id, $scope.nuevo)
 			    	.then(
 			    		function (response){
 			            Materialize.toast(response.data.statusMessage, 4000);
@@ -87,7 +87,7 @@
 
 		    // La funcion delete() que hace la solicitud para eliminar un elemeto esepecifico
 		    $scope.delete = function(id) {
-		    	$http.delete("http://localhost/api/api/usuario/" + id)
+		    	$http.delete("api/usuario/" + id)
 				   .then(
 				       function (response){
 				         console.log(response);
